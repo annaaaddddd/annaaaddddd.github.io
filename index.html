@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anna Dai</title>
+  <meta name="description" content="Nanru (Anna) Dai — computer graphics, GPU programming, and handmade things.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply saved theme before paint to avoid flash.
+    try {
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <button id="theme" class="theme-toggle" aria-label="Toggle theme">
+    <span class="sun">☼</span><span class="moon">☾</span>
+  </button>
+
+  <!-- Everything below is rendered from content.js — edit that file, not this one. -->
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="intro">
+        <p class="eyebrow" id="eyebrow"></p>
+        <h1 class="wobble" id="name"></h1>
+        <p class="lede" id="lede"></p>
+      </div>
+
+      <nav class="side-nav" id="nav" aria-label="Sections"></nav>
+
+      <div class="side-contact">
+        <p class="big"><a id="email"></a></p>
+        <p class="contact-links" id="links"></p>
+        <p class="meta">
+          <span>© <span id="year"></span> <span id="copyright"></span></span>
+          <span id="location"></span>
+        </p>
+      </div>
+    </aside>
+
+    <main id="sections"></main>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
