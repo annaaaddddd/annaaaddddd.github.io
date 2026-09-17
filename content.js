@@ -101,6 +101,16 @@ const CONTENT = {
       detail: "M.S.E. in Computer Graphics and Game Technology",
     },
     {
+      when: "Mar 2025 – May 2026",
+      org: "Johns Hopkins University",
+      detail: "Research Assistant · generative world models, mentored by Jieneng Chen &amp; Alan Yuille",
+    },
+    {
+      when: "Aug 2024 – Dec 2025",
+      org: "Johns Hopkins University",
+      detail: "Course Assistant · EN.601.457 Computer Graphics, EN.601.230 Mathematical Foundations for Computer Science",
+    },
+    {
       when: "Summer 2024",
       org: "Google",
       detail: `STEP Intern · New York, New York`,
