@@ -3,6 +3,7 @@
 //  - Text fields accept inline HTML (<em>, <a>, …).
 //  - Set `hidden: true` on a project to hide it without deleting it.
 //  - `media` on a project: path to an .mp4 or image in media/ (optional).
+//  - `poster` next to a gif `media`: still frame shown until hover plays the gif.
 // ============================================================================
 
 const CONTENT = {
@@ -38,6 +39,7 @@ const CONTENT = {
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Flocking" }],
       accent: "#76b900",
       media: "media/cuda-boids.gif",
+      poster: "media/cuda-boids-poster.jpg",
     },
     {
       context: "CIS 5660 · Procedural Computer Graphics",
@@ -52,6 +54,7 @@ const CONTENT = {
       ],
       accent: "#3a7bd5",
       media: "media/wave-interference.gif",
+      poster: "media/wave-interference-poster.jpg",
     },
     {
       context: "ICLR 2026 Oral · Research with Prof. Alan Yuille, JHU",
@@ -136,7 +139,7 @@ const CONTENT = {
       rows: [
         { when: "2022 – 2026", what: `<strong>SLAM</strong> · member / President` },
         { when: "2022 – 2026", what: `<strong>KPM</strong> · member / Vice President` },
-        { when: "2026 – Present", what: `<strong>Kbeats</strong> · member` },
+        { when: "2026 – Present", what: `<strong>K-beats</strong> · member` },
       ],
       links: [
         { label: "Favorite cover (KPM)", url: "https://youtu.be/9xWnomjHm3w" },
@@ -147,7 +150,8 @@ const CONTENT = {
     {
       title: "Fiber",
       desc: `A semester of fiber art including coiled &amp; reed baskets, knitting,
-             quilting, and (above all) crochet. Favorite piece: a crocheted
+             quilting, and (above all) crochet. 
+             Favorite piece: a crocheted
              goblet replica at twice the original's scale, body crocheted as if
              liquid were spilling out.`,
       links: [

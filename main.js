@@ -39,9 +39,14 @@ function renderSidebar(C) {
 function projectHTML(p) {
   let media = '';
   if (p.media) {
-    media = /\.(mp4|webm)$/i.test(p.media)
-      ? `<video autoplay muted loop playsinline src="${p.media}"></video>`
-      : `<img src="${p.media}" alt="">`;
+    if (/\.(mp4|webm)$/i.test(p.media)) {
+      media = `<video autoplay muted loop playsinline src="${p.media}"></video>`;
+    } else if (p.poster) {
+      media = `<img src="${p.poster}" data-gif="${p.media}" alt="">
+               <span class="hint">▶ hover to play</span>`;
+    } else {
+      media = `<img src="${p.media}" alt="">`;
+    }
   }
   const links = (p.links || []).map(l =>
     `<a href="${l.url}"${linkAttrs(l.url)}>${l.label} ↗</a>`
@@ -117,6 +122,18 @@ function renderSections(C) {
 
 renderSidebar(CONTENT);
 renderSections(CONTENT);
+
+// ---------- gifs: still poster until hover ----------
+document.querySelectorAll('img[data-gif]').forEach(img => {
+  if (!matchMedia('(hover: hover)').matches) {
+    img.src = img.dataset.gif; // no hover on touch screens: just animate
+    return;
+  }
+  const poster = img.src;
+  const card = img.closest('.project');
+  card.addEventListener('mouseenter', () => { img.src = img.dataset.gif; });
+  card.addEventListener('mouseleave', () => { img.src = poster; });
+});
 
 // ---------- scrollspy: highlight the section in view ----------
 const navLinks = [...document.querySelectorAll('.side-nav a')];
