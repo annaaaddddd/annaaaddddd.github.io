@@ -57,6 +57,19 @@ const CONTENT = {
       poster: "media/wave-interference-poster.jpg",
     },
     {
+      context: "CIS 5660 · Procedural Computer Graphics",
+      title: "Procedural Fireball",
+      desc: `Animated procedural fireball with FBM vertex displacement, per-pixel fire shading, and a starfield background.`,
+      tags: ["GLSL", "WebGL2", "TypeScript"],
+      links: [
+        { label: "Live demo", url: "https://annaaaddddd.github.io/WebGL-fireball/" },
+        { label: "GitHub", url: "https://github.com/annaaaddddd/WebGL-fireball" },
+      ],
+      accent: "#d5c53a",
+      media: "media/fireball.gif",
+      poster: "media/fireball-poster.png",
+    },
+    {
       context: "ICLR 2026 Oral · Research with Prof. Alan Yuille, JHU",
       title: "World-in-World",
       desc: `A closed-loop world interface for evaluating generative world
