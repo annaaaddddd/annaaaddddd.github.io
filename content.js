@@ -31,6 +31,18 @@ const CONTENT = {
   projects: [
     {
       context: "CIS 5650 · GPU Programming",
+      title: "CUDA Path Tracer",
+      desc: `Physically based path tracer parallelized over path segments, with
+             a from-scratch glTF loader and BVH (9.9x on a 25k-triangle kitchen).
+             Refraction, textures, bump mapping, direct lighting, and thin-lens
+             depth of field, each measured against a CPU baseline.`,
+      tags: ["CUDA", "C++", "Path Tracing"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Path-Tracer" }],
+      accent: "#d90456",
+      media: "media/path-tracer.jpg",
+    },
+    {
+      context: "CIS 5650 · GPU Programming",
       title: "CUDA Boid Flocking",
       desc: `Naive, scattered-grid and coherent-grid flocking in CUDA. A 31×
              speedup at 1M boids from a cell-sorted memory layout, profiled
