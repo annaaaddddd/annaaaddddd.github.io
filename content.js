@@ -46,7 +46,7 @@ const CONTENT = {
       context: "CIS 5650 · GPU Programming",
       title: "CUDA Path Tracer",
       desc: `Physically based path tracer parallelized over path segments, with
-             a from-scratch glTF loader and BVH (9.9x on a 25k-triangle kitchen).
+             a from-scratch glTF loader and BVH (9x on a 25k-triangle kitchen).
              Refraction, textures, bump mapping, direct lighting, and thin-lens
              depth of field, each measured against a CPU baseline.`,
       tags: ["CUDA", "C++", "Path Tracing"],
