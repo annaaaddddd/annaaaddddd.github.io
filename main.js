@@ -36,7 +36,7 @@ function renderSidebar(C) {
 }
 
 // ---------- sections ----------
-function projectHTML(p) {
+function projectCard(p, i, accent) {
   let media = '';
   if (p.media) {
     if (/\.(mp4|webm)$/i.test(p.media)) {
@@ -52,12 +52,12 @@ function projectHTML(p) {
     `<a href="${l.url}"${linkAttrs(l.url)}>${l.label} ↗</a>`
   ).join('');
   return `
-    <li class="project">
-      <div class="thumb${p.mediaFit === 'contain' ? ' contain' : ''}" style="--accent:${p.accent}">${media}</div>
-      <div class="body">
+    <li class="pcard" style="--accent:${accent}; --i:${i}">
+      <div class="pcard-top${p.mediaFit === 'contain' ? ' contain' : ''}">${media}</div>
+      <div class="pcard-body">
         <p class="context">${p.context}</p>
-        <h3>${p.title}</h3>
-        <p>${p.desc}</p>
+        <h4>${p.title}</h4>
+        <p class="pdesc">${p.desc}</p>
         <p class="tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</p>
         ${links ? `<p class="links">${links}</p>` : ''}
         ${p.note ? `<p class="note">${p.note}</p>` : ''}
@@ -69,9 +69,20 @@ const SECTIONS = [
   {
     id: 'projects',
     title: 'Projects',
-    html: C => `<ul class="projects">${
-      C.projects.filter(p => !p.hidden).map(projectHTML).join('')
-    }</ul>`,
+    html: C => C.projectGroups.map(g => {
+      const items = C.projects.filter(p => !p.hidden && p.group === g.id);
+      if (!items.length) return '';
+      const arrows = items.length > 1 ? `
+        <span class="row-nav">
+          <button class="prev" aria-label="Scroll ${g.title} back">‹</button>
+          <button class="next" aria-label="Scroll ${g.title} forward">›</button>
+        </span>` : '';
+      return `
+        <div class="pgroup">
+          <h3 class="group-title">${g.title}${arrows}</h3>
+          <ul class="carousel">${items.map((p, i) => projectCard(p, i, g.accent)).join('')}</ul>
+        </div>`;
+    }).join(''),
   },
   {
     id: 'timeline',
@@ -123,14 +134,97 @@ function renderSections(C) {
 renderSidebar(CONTENT);
 renderSections(CONTENT);
 
-// ---------- gifs: still poster until hover ----------
+// ---------- carousels rise in as they enter the viewport ----------
+const rise = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    rise.unobserve(e.target);
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.carousel').forEach(c => rise.observe(c));
+
+// ---------- carousels: drag + arrows, and (optionally) endless looping ----------
+document.querySelectorAll('.carousel').forEach(car => {
+  const originals = [...car.children];
+  if (originals.length < 2) return; // a single card just sits there
+
+  if (CONTENT.carouselLoop) {
+    // enough copies that there is always a full set off-screen on each side
+    const copies = Math.max(4, Math.ceil((car.clientWidth * 2) / car.scrollWidth) + 2);
+    for (let c = 1; c < copies; c++) {
+      originals.forEach(el => {
+        const clone = el.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        car.appendChild(clone);
+      });
+    }
+
+    let setW = 0;
+    const measure = () => {
+      setW = car.children[originals.length].offsetLeft - car.children[0].offsetLeft;
+    };
+    measure();
+    addEventListener('resize', measure);
+    car.scrollLeft = setW;
+
+    car.addEventListener('scroll', () => {
+      if (!setW) return;
+      if (car.scrollLeft < setW * 0.5) car.scrollLeft += setW;
+      else if (car.scrollLeft > setW * 1.5) car.scrollLeft -= setW;
+    });
+  }
+
+  // drag to scroll with the mouse (trackpads and touch already scroll natively)
+  let dragging = false, moved = false, startX = 0, startLeft = 0;
+  car.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse') return;
+    dragging = true; moved = false;
+    startX = e.clientX; startLeft = car.scrollLeft;
+  });
+  addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 5) moved = true;
+    car.scrollLeft = startLeft - dx;
+  });
+  addEventListener('pointerup', () => { dragging = false; });
+  car.addEventListener('click', e => {
+    if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+  }, true);
+
+  // arrow buttons glide one card per click (ends clamp unless looping)
+  const step = originals[1].offsetLeft - originals[0].offsetLeft; // card + gap
+  let anim;
+  const glide = delta => {
+    cancelAnimationFrame(anim);
+    const start = performance.now(), from = car.scrollLeft, dur = 400;
+    const tick = now => {
+      const t = Math.min(1, (now - start) / dur);
+      car.scrollLeft = from + delta * (1 - Math.pow(1 - t, 3));
+      if (t < 1) anim = requestAnimationFrame(tick);
+    };
+    anim = requestAnimationFrame(tick);
+  };
+  const nav = car.closest('.pgroup').querySelector('.row-nav');
+  if (nav) {
+    if (car.scrollWidth <= car.clientWidth + 4) {
+      nav.remove(); // the whole row fits, nothing to scroll
+    } else {
+      nav.querySelector('.prev').addEventListener('click', () => glide(-step));
+      nav.querySelector('.next').addEventListener('click', () => glide(step));
+    }
+  }
+});
+
+// ---------- gifs: still poster until hover (bound after carousel cloning) ----------
 document.querySelectorAll('img[data-gif]').forEach(img => {
   if (!matchMedia('(hover: hover)').matches) {
     img.src = img.dataset.gif; // no hover on touch screens: just animate
     return;
   }
   const poster = img.src;
-  const card = img.closest('.project');
+  const card = img.closest('.pcard');
   card.addEventListener('mouseenter', () => { img.src = img.dataset.gif; });
   card.addEventListener('mouseleave', () => { img.src = poster; });
 });

@@ -4,6 +4,8 @@
 //  - Set `hidden: true` on a project to hide it without deleting it.
 //  - `media` on a project: path to an .mp4 or image in media/ (optional).
 //  - `poster` next to a gif `media`: still frame shown until hover plays the gif.
+//  - `group` on a project matches an id in `projectGroups` below; groups render
+//    as horizontal card carousels, in the order listed there.
 // ============================================================================
 
 const CONTENT = {
@@ -28,8 +30,19 @@ const CONTENT = {
   location: "Philadelphia, PA",
 
   // ---------- projects ----------
+  // Rows scroll normally for now; flip to true to make them loop endlessly
+  // once there are enough projects per group (looks odd with only 2-3 cards).
+  carouselLoop: false,
+  // Each group's accent colors the thumbnails of every card in it.
+  projectGroups: [
+    { id: "gpu", title: "GPU &amp; Rendering", accent: "#76b900" },
+    { id: "proc", title: "Shaders &amp; Procedural", accent: "#3a7bd5" },
+    { id: "engine", title: "Engines &amp; Games", accent: "#e67e22" },
+    { id: "research", title: "Research", accent: "#8e44ad" },
+  ],
   projects: [
     {
+      group: "gpu",
       context: "CIS 5650 · GPU Programming",
       title: "CUDA Path Tracer",
       desc: `Physically based path tracer parallelized over path segments, with
@@ -38,10 +51,10 @@ const CONTENT = {
              depth of field, each measured against a CPU baseline.`,
       tags: ["CUDA", "C++", "Path Tracing"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Path-Tracer" }],
-      accent: "#d90456",
       media: "media/path-tracer.jpg",
     },
     {
+      group: "gpu",
       context: "CIS 5650 · GPU Programming",
       title: "CUDA Boid Flocking",
       desc: `Naive, scattered-grid and coherent-grid flocking in CUDA. A 31×
@@ -49,11 +62,58 @@ const CONTENT = {
              with Nsight Systems &amp; Compute.`,
       tags: ["CUDA", "C++", "Nsight"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Flocking" }],
-      accent: "#76b900",
       media: "media/cuda-boids.gif",
       poster: "media/cuda-boids-poster.jpg",
     },
     {
+      hidden: true,
+      group: "gpu",
+      context: "CIS 5650 · GPU Programming and Architecture",
+      title: "WebGPU Forward+ Renderer",
+      desc: `WebGPU renderer lighting Sponza with thousands of dynamic lights.
+            Compute-shader light clustering makes Forward+ shading about 16× faster
+            than naive at 5,000 lights.`,
+      tags: ["WebGPU", "WGSL", "TypeScript", "Compute Shaders", "Forward+", "Clustered Shading"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/WebGPU-Forward-Plus-and-Clustered-Deferred" }],
+      media: "media/webgpu-forward-plus.png",
+    },
+    {
+      hidden: true, // flip to false (or delete this line) when ready
+      group: "gpu",
+      context: "Ongoing",
+      title: "Metal Renderer",
+      desc: `A real-time renderer built from scratch with Apple Metal — custom
+             pipeline states, command buffers, depth buffering, C++/Objective-C
+             interop. Extending toward lighting and model loading.`,
+      tags: ["Metal", "C++", "Objective-C"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/metalRenderer" }],
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics",
+      title: "Balloon Bunny",
+      desc: `Stylized Unity scene recreating a 2D balloon illustration, with a
+            hand-drawn toon look: UV-space shadows, wobbling outlines, and a
+            one-key sunset style switch.`,
+      tags: ["Unity", "Shader Graph", "HLSL", "URP", "NPR", "Post-Processing"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/toon-balloon-bunny" }],
+      media: "media/toon-bunny.png",
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics",
+      title: "Procedural Fireball",
+      desc: `Animated procedural fireball with FBM vertex displacement, per-pixel fire shading, and a starfield background.`,
+      tags: ["GLSL", "WebGL2", "TypeScript"],
+      links: [
+        { label: "Live demo", url: "https://annaaaddddd.github.io/WebGL-fireball/" },
+        { label: "GitHub", url: "https://github.com/annaaaddddd/WebGL-fireball" },
+      ],
+      media: "media/fireball.gif",
+      poster: "media/fireball-poster.png",
+    },
+    {
+      group: "proc",
       context: "CIS 5660 · Procedural Computer Graphics",
       title: "Procedural Wave-Interference Shader",
       desc: `Real-time WebGL2 shader combining five object-space plane waves
@@ -64,35 +124,11 @@ const CONTENT = {
         { label: "Live demo", url: "https://annaaaddddd.github.io/wave-interference-cube/" },
         { label: "GitHub", url: "https://github.com/annaaaddddd/wave-interference-cube" },
       ],
-      accent: "#3a7bd5",
       media: "media/wave-interference.gif",
       poster: "media/wave-interference-poster.jpg",
     },
     {
-      context: "CIS 5660 · Procedural Computer Graphics",
-      title: "Procedural Fireball",
-      desc: `Animated procedural fireball with FBM vertex displacement, per-pixel fire shading, and a starfield background.`,
-      tags: ["GLSL", "WebGL2", "TypeScript"],
-      links: [
-        { label: "Live demo", url: "https://annaaaddddd.github.io/WebGL-fireball/" },
-        { label: "GitHub", url: "https://github.com/annaaaddddd/WebGL-fireball" },
-      ],
-      accent: "#d5c53a",
-      media: "media/fireball.gif",
-      poster: "media/fireball-poster.png",
-    },
-    {
-      context: "ICLR 2026 Oral · Research with Prof. Alan Yuille, JHU",
-      title: "World-in-World",
-      desc: `A closed-loop world interface for evaluating generative world
-             models on reasoning and goal completion, beyond visual fidelity.`,
-      tags: ["Research", "World Models"],
-      links: [{ label: "Project page", url: "https://world-in-world.github.io/" }],
-      accent: "#8e44ad",
-      media: "media/wiw-logo.svg",
-      mediaFit: "contain", // logo floats on the gradient instead of filling it
-    },
-    {
+      group: "engine",
       context: "Game Engine Programming · JHU",
       title: "2D Tile-Based Platformer Engine",
       desc: `Gameplay layer and engine subsystems on an ECS core: one-way tile
@@ -105,19 +141,18 @@ const CONTENT = {
         { label: "Game over", url: "https://youtu.be/KpQ3lVwxoGs" },
       ],
       note: "Course fork of a private repo — code available on request.",
-      accent: "#e67e22",
       media: "media/platformer.jpg",
     },
     {
-      hidden: true, // flip to false (or delete this line) when ready
-      context: "Ongoing",
-      title: "Metal Renderer",
-      desc: `A real-time renderer built from scratch with Apple Metal — custom
-             pipeline states, command buffers, depth buffering, C++/Objective-C
-             interop. Extending toward lighting and model loading.`,
-      tags: ["Metal", "C++", "Objective-C"],
-      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/metalRenderer" }],
-      accent: "#c0392b",
+      group: "research",
+      context: "ICLR 2026 Oral · Research with Prof. Alan Yuille, JHU",
+      title: "World-in-World",
+      desc: `A closed-loop world interface for evaluating generative world
+             models on reasoning and goal completion, beyond visual fidelity.`,
+      tags: ["Research", "World Models"],
+      links: [{ label: "Project page", url: "https://world-in-world.github.io/" }],
+      media: "media/wiw-logo.svg",
+      mediaFit: "contain", // logo floats on the gradient instead of filling it
     },
   ],
 
