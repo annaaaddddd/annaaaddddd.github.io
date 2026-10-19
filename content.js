@@ -43,7 +43,7 @@ const CONTENT = {
   projects: [
     {
       group: "gpu",
-      context: "CIS 5650 · GPU Programming",
+      context: "CIS 5650 · GPU Programming · Fall 2026",
       title: "CUDA Path Tracer",
       desc: `Physically based path tracer parallelized over path segments, with
              a from-scratch glTF loader and BVH (9x on a 25k-triangle kitchen).
@@ -55,7 +55,7 @@ const CONTENT = {
     },
     {
       group: "gpu",
-      context: "CIS 5650 · GPU Programming",
+      context: "CIS 5650 · GPU Programming · Fall 2026",
       title: "CUDA Boid Flocking",
       desc: `Naive, scattered-grid and coherent-grid flocking in CUDA. A 31×
              speedup at 1M boids from a cell-sorted memory layout, profiled
@@ -66,16 +66,18 @@ const CONTENT = {
       poster: "media/cuda-boids-poster.jpg",
     },
     {
-      hidden: true,
       group: "gpu",
-      context: "CIS 5650 · GPU Programming and Architecture",
-      title: "WebGPU Forward+ Renderer",
-      desc: `WebGPU renderer lighting Sponza with thousands of dynamic lights.
-            Compute-shader light clustering makes Forward+ shading about 16× faster
-            than naive at 5,000 lights.`,
-      tags: ["WebGPU", "WGSL", "TypeScript", "Compute Shaders", "Forward+", "Clustered Shading"],
-      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/WebGPU-Forward-Plus-and-Clustered-Deferred" }],
-      media: "media/webgpu-forward-plus.png",
+      context: "CIS 5650 · GPU Programming · Fall 2026",
+      title: "WebGPU Forward+ &amp; Clustered Deferred Shading",
+      desc: `Sponza under 5,000 moving lights in WebGPU. Compute-shader light
+            clustering takes a naive 352 ms frame to 29.5 ms with Forward+
+            and 9 ms with clustered deferred.`,
+      tags: ["WebGPU", "WGSL", "TypeScript", "Forward+", "Clustered Shading", "Compute Shaders"],
+      links: [
+        { label: "Live demo", url: "https://annaaaddddd.github.io/WebGPU-Forward-Plus-and-Clustered-Deferred" },
+        { label: "GitHub", url: "https://github.com/annaaaddddd/WebGPU-Forward-Plus-and-Clustered-Deferred" },
+      ],
+      media: "media/webgpu-forward-plus.jpg",
     },
     {
       hidden: true, // flip to false (or delete this line) when ready
@@ -90,7 +92,7 @@ const CONTENT = {
     },
     {
       group: "proc",
-      context: "CIS 5660 · Procedural Computer Graphics",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
       title: "Balloon Bunny",
       desc: `Stylized Unity scene recreating a 2D balloon illustration, with a
             hand-drawn toon look: UV-space shadows, wobbling outlines, and a
@@ -101,9 +103,11 @@ const CONTENT = {
     },
     {
       group: "proc",
-      context: "CIS 5660 · Procedural Computer Graphics",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
       title: "Procedural Fireball",
-      desc: `Animated procedural fireball with FBM vertex displacement, per-pixel fire shading, and a starfield background.`,
+      desc: `A meteor falling through a procedural starfield: two-layer vertex
+             displacement, domain-warped FBM fire shading, and a screen-space
+             trail with rim fire and debris, in four cosine-palette themes.`,
       tags: ["GLSL", "WebGL2", "TypeScript"],
       links: [
         { label: "Live demo", url: "https://annaaaddddd.github.io/WebGL-fireball/" },
@@ -114,7 +118,19 @@ const CONTENT = {
     },
     {
       group: "proc",
-      context: "CIS 5660 · Procedural Computer Graphics",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
+      title: "Procedural Jellyfish",
+      desc: `An animated jellyfish built from nodes and VEX in Houdini: one
+             keyframed bell drives the pulse, veins grow as shortest paths
+             across it, and Vellum arms and tentacles trail behind.`,
+      tags: ["Houdini", "VEX", "Vellum", "Karma"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/procedural-jellyfish" }],
+      media: "media/jellyfish.gif",
+      poster: "media/jellyfish-poster.jpg",
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
       title: "Procedural Wave-Interference Shader",
       desc: `Real-time WebGL2 shader combining five object-space plane waves
              with fBM domain warping into seamless, anti-aliased interference
@@ -129,7 +145,7 @@ const CONTENT = {
     },
     {
       group: "engine",
-      context: "Game Engine Programming · JHU",
+      context: "Game Engine Programming · JHU · Spring 2026",
       title: "2D Tile-Based Platformer Engine",
       desc: `Gameplay layer and engine subsystems on an ECS core: one-way tile
              collisions, moving platforms with rider carrying, springs,
