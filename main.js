@@ -78,7 +78,7 @@ const SECTIONS = [
           <button class="next" aria-label="Scroll ${g.title} forward">›</button>
         </span>` : '';
       return `
-        <div class="pgroup">
+        <div class="pgroup" id="g-${g.id}">
           <h3 class="group-title">${g.title}${arrows}</h3>
           <ul class="carousel">${items.map((p, i) => projectCard(p, i, g.accent)).join('')}</ul>
         </div>`;
@@ -126,9 +126,17 @@ function renderSections(C) {
       ${s.html(C)}
     </section>`).join('');
 
-  $('nav').innerHTML = SECTIONS.map((s, i) =>
-    `<a href="#${s.id}"><span class="num">0${i + 1}</span>${s.title}</a>`
-  ).join('');
+  $('nav').innerHTML = SECTIONS.map((s, i) => {
+    let sub = '';
+    if (s.id === 'projects') {
+      sub = `<div class="sub-nav">${
+        C.projectGroups
+          .filter(g => C.projects.some(p => !p.hidden && p.group === g.id))
+          .map(g => `<a href="#g-${g.id}">${g.title}</a>`).join('')
+      }</div>`;
+    }
+    return `<a href="#${s.id}"><span class="num">0${i + 1}</span>${s.title}</a>${sub}`;
+  }).join('');
 }
 
 renderSidebar(CONTENT);
@@ -229,16 +237,30 @@ document.querySelectorAll('img[data-gif]').forEach(img => {
   card.addEventListener('mouseleave', () => { img.src = poster; });
 });
 
-// ---------- scrollspy: highlight the section in view ----------
-const navLinks = [...document.querySelectorAll('.side-nav a')];
-const spy = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    navLinks.forEach(a =>
-      a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-  });
-}, { rootMargin: '-40% 0px -55% 0px' });
-document.querySelectorAll('.section').forEach(s => spy.observe(s));
+// ---------- scrollspy: highlight the section and project group in view ----------
+const navLinks = [...document.querySelectorAll('.side-nav > a')];
+const subLinks = [...document.querySelectorAll('.sub-nav a')];
+const sections = [...document.querySelectorAll('.section')];
+const pgroups = [...document.querySelectorAll('.pgroup')];
+
+function updateSpy() {
+  const probe = innerHeight * 0.42; // reading line: 42% down the viewport
+  let sec = sections[0];
+  sections.forEach(s => { if (s.getBoundingClientRect().top <= probe) sec = s; });
+  navLinks.forEach(a =>
+    a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id));
+
+  // group sub-items only light up while Projects itself is the active section
+  let grp = null;
+  if (sec.id === 'projects') {
+    pgroups.forEach(g => { if (g.getBoundingClientRect().top <= probe) grp = g; });
+  }
+  subLinks.forEach(a =>
+    a.classList.toggle('active', !!grp && a.getAttribute('href') === '#' + grp.id));
+}
+addEventListener('scroll', () => requestAnimationFrame(updateSpy), { passive: true });
+addEventListener('resize', updateSpy);
+updateSpy();
 
 // ---------- theme toggle ----------
 const root = document.documentElement;

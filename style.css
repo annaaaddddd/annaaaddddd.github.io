@@ -115,6 +115,18 @@ main { padding: clamp(48px, 12vh, 100px) 0 80px; }
 .side-nav .num { font-size: .75rem; letter-spacing: .08em; color: var(--accent); }
 .side-nav a:hover, .side-nav a.active { color: var(--fg); }
 .side-nav a:hover::before, .side-nav a.active::before { width: 48px; background: var(--accent); }
+.sub-nav { display: flex; flex-direction: column; gap: 9px; margin: -4px 0 2px 60px; }
+.sub-nav a {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .8rem; color: var(--muted); width: max-content;
+  transition: color .2s;
+}
+.sub-nav a::before {
+  content: ''; width: 10px; height: 1px; background: var(--line);
+  transition: width .3s cubic-bezier(.34,1.56,.64,1), background .2s;
+}
+.sub-nav a:hover, .sub-nav a.active { color: var(--fg); }
+.sub-nav a:hover::before, .sub-nav a.active::before { width: 22px; background: var(--accent); }
 
 /* ---------- sidebar: contact ---------- */
 .side-contact { margin-top: auto; padding-top: 32px; }
@@ -136,7 +148,7 @@ main { padding: clamp(48px, 12vh, 100px) 0 80px; }
 .section-lede { margin: -18px 0 28px; color: var(--muted); font-style: italic; font-family: var(--serif); }
 
 /* ---------- projects ---------- */
-.pgroup { margin-bottom: 44px; }
+.pgroup { margin-bottom: 44px; scroll-margin-top: 24px; }
 .pgroup:last-child { margin-bottom: 0; }
 .group-title {
   display: flex; align-items: center; gap: 12px;
