@@ -93,6 +93,18 @@ const CONTENT = {
     {
       group: "proc",
       context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
+      title: "Procedural Jellyfish",
+      desc: `An animated jellyfish built from nodes and VEX in Houdini: one
+             keyframed bell drives the pulse, veins grow as shortest paths
+             across it, and Vellum arms and tentacles trail behind.`,
+      tags: ["Houdini", "VEX", "Vellum", "Karma"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/procedural-jellyfish" }],
+      media: "media/jellyfish.mp4",
+      poster: "media/jellyfish-poster.jpg", // shown while the video loads
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
       title: "Balloon Bunny",
       desc: `Stylized Unity scene recreating a 2D balloon illustration, with a
             hand-drawn toon look: UV-space shadows, wobbling outlines, and a
@@ -115,18 +127,6 @@ const CONTENT = {
       ],
       media: "media/fireball.gif",
       poster: "media/fireball-poster.png",
-    },
-    {
-      group: "proc",
-      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
-      title: "Procedural Jellyfish",
-      desc: `An animated jellyfish built from nodes and VEX in Houdini: one
-             keyframed bell drives the pulse, veins grow as shortest paths
-             across it, and Vellum arms and tentacles trail behind.`,
-      tags: ["Houdini", "VEX", "Vellum", "Karma"],
-      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/procedural-jellyfish" }],
-      media: "media/jellyfish.gif",
-      poster: "media/jellyfish-poster.jpg",
     },
     {
       group: "proc",

@@ -40,7 +40,10 @@ function projectCard(p, i, accent) {
   let media = '';
   if (p.media) {
     if (/\.(mp4|webm)$/i.test(p.media)) {
-      media = `<video autoplay muted loop playsinline src="${p.media}"></video>`;
+      media = p.poster
+        ? `<video muted loop playsinline preload="metadata" poster="${p.poster}" src="${p.media}"></video>
+           <span class="hint">▶ hover to play</span>`
+        : `<video autoplay muted loop playsinline src="${p.media}"></video>`;
     } else if (p.poster) {
       media = `<img src="${p.poster}" data-gif="${p.media}" alt="">
                <span class="hint">▶ hover to play</span>`;
@@ -235,6 +238,18 @@ document.querySelectorAll('img[data-gif]').forEach(img => {
   const card = img.closest('.pcard');
   card.addEventListener('mouseenter', () => { img.src = img.dataset.gif; });
   card.addEventListener('mouseleave', () => { img.src = poster; });
+});
+
+// videos with a poster behave the same way: still until hover
+document.querySelectorAll('.pcard video[poster]').forEach(v => {
+  if (!matchMedia('(hover: hover)').matches) {
+    v.autoplay = true;
+    v.play();
+    return;
+  }
+  const card = v.closest('.pcard');
+  card.addEventListener('mouseenter', () => v.play());
+  card.addEventListener('mouseleave', () => v.pause());
 });
 
 // ---------- scrollspy: highlight the section and project group in view ----------
