@@ -111,7 +111,8 @@ const CONTENT = {
             one-key sunset style switch.`,
       tags: ["Unity", "Shader Graph", "HLSL", "URP", "NPR", "Post-Processing"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/toon-balloon-bunny" }],
-      media: "media/toon-bunny.png",
+      media: "media/toon-bunny.mp4",
+      poster: "media/toon-bunny-poster.jpg", // shown until hover plays the video
     },
     {
       group: "proc",
