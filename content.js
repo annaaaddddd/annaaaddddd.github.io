@@ -56,14 +56,15 @@ const CONTENT = {
     {
       group: "gpu",
       context: "CIS 5650 · GPU Programming · Fall 2026",
-      title: "CUDA Boid Flocking",
-      desc: `Naive, scattered-grid and coherent-grid flocking in CUDA. A 31×
-             speedup at 1M boids from a cell-sorted memory layout, profiled
-             with Nsight Systems &amp; Compute.`,
-      tags: ["CUDA", "C++", "Nsight"],
-      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Flocking" }],
-      media: "media/cuda-boids.gif",
-      poster: "media/cuda-boids-poster.jpg",
+      title: "Vulkan Grass Rendering",
+      desc: `A field of up to a million Bezier-curve grass blades, simulated and
+             culled in compute shaders after Jahrmann &amp; Wimmer. Culling takes
+             1M blades from 24 to 95 FPS, and tessellation LOD halves the frame
+             time again.`,
+      tags: ["Vulkan", "C++", "Compute Shaders", "Tessellation"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/vulkan-grass-rendering" }],
+      media: "media/vulkan-grass.mp4",
+      poster: "media/vulkan-grass-poster.jpg",
     },
     {
       group: "gpu",
@@ -78,6 +79,18 @@ const CONTENT = {
         { label: "GitHub", url: "https://github.com/annaaaddddd/WebGPU-Forward-Plus-and-Clustered-Deferred" },
       ],
       media: "media/webgpu-forward-plus.jpg",
+    },
+    {
+      group: "gpu",
+      context: "CIS 5650 · GPU Programming · Fall 2026",
+      title: "CUDA Boid Flocking",
+      desc: `Naive, scattered-grid and coherent-grid flocking in CUDA. A 31×
+             speedup at 1M boids from a cell-sorted memory layout, profiled
+             with Nsight Systems &amp; Compute.`,
+      tags: ["CUDA", "C++", "Nsight"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Flocking" }],
+      media: "media/cuda-boids.gif",
+      poster: "media/cuda-boids-poster.jpg",
     },
     {
       hidden: true, // flip to false (or delete this line) when ready
