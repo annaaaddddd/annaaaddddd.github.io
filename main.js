@@ -249,7 +249,10 @@ document.querySelectorAll('.pcard video[poster]').forEach(v => {
   }
   const card = v.closest('.pcard');
   card.addEventListener('mouseenter', () => v.play());
-  card.addEventListener('mouseleave', () => v.pause());
+  card.addEventListener('mouseleave', () => {
+    v.pause();
+    v.load(); // back to the poster frame, and the next hover restarts from 0
+  });
 });
 
 // ---------- scrollspy: highlight the section and project group in view ----------
