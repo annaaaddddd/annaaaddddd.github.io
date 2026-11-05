@@ -1,20 +1,21 @@
 # anna's site
 
-Plain HTML/CSS/JS. No build step.
-
-## Deploy on GitHub Pages
-1. Create a repo named `annaaaddddd.github.io` (public).
-2. Push these files to `main`.
-3. Settings → Pages → Source: `Deploy from a branch`, branch `main`, folder `/ (root)`.
-4. Site goes live at https://annaaaddddd.github.io in ~1 min.
+Personal site at https://annaaaddddd.github.io. Plain HTML/CSS/JS, no build step: push to `main` and GitHub Pages redeploys in about a minute.
 
 ## Where to edit
-- `content.js` — **all content lives here**: intro, links, projects, timeline, off-screen. Text fields accept inline HTML. Set `hidden: true` on a project to hide it. Each project's `group` points at an id in `projectGroups`; groups render as looping card carousels.
-- `style.css` — colors are at the top (`--accent` is the periwinkle). Layout: sticky sidebar + scrolling content.
-- `main.js` — renders `content.js` into the page, plus theme toggle + dot-grid background. You shouldn't need to touch this to change content.
-- `index.html` — just the page shell; no content in it.
-- `media/` — drop project videos / photos here, then reference them from `content.js` (`media:` on a project, `gallery:` on an off-screen card).
+
+- `content.js`: **all content lives here** (intro, links, projects, timeline, off-screen). Text fields accept inline HTML.
+  - Projects are grouped: each project's `group` points at an id in `projectGroups`, and every group renders as a horizontal card carousel (drag, arrows, or swipe). Order on the page = order in the arrays.
+  - `hidden: true` hides a project without deleting it.
+  - `carouselLoop: true` makes the rows scroll endlessly; off until there are enough projects per group.
+- `style.css`: colors are tokens at the top. Light mode is mint + periwinkle, dark mode is deep purple + butter yellow; the dark palette is defined twice (manual toggle and system preference), keep both in sync.
+- `main.js`: renders `content.js` into the page, plus theme toggle, scrollspy, carousels, and the dot-grid background. Not needed for content changes.
+- `index.html`: just the page shell, no content in it.
+- `media/`: project videos and photos, referenced from `content.js`.
+  - `media:` on a project takes a .jpg/.png/.gif/.mp4. Keep videos around 800px wide; a gif or mp4 with a `poster:` image stays on the poster until hover (touch screens just autoplay).
+  - `gallery:` on an off-screen card takes a list of images.
 
 ## Todo
+
 - [ ] Resume PDF + link
 - [ ] Set Metal Renderer `hidden: false` when ready
