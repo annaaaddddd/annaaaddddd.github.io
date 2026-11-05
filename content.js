@@ -106,18 +106,6 @@ const CONTENT = {
     {
       group: "proc",
       context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
-      title: "Procedural Jellyfish",
-      desc: `An animated jellyfish built from nodes and VEX in Houdini: one
-             keyframed bell drives the pulse, veins grow as shortest paths
-             across it, and Vellum arms and tentacles trail behind.`,
-      tags: ["Houdini", "VEX", "Vellum", "Karma"],
-      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/procedural-jellyfish" }],
-      media: "media/jellyfish.mp4",
-      poster: "media/jellyfish-poster.jpg", // shown while the video loads
-    },
-    {
-      group: "proc",
-      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
       title: "Jiangnan Procedural Buildings",
       desc: `One Houdini HDA stacks floors into Jiangnan riverside buildings:
              the same tool makes a stilted teahouse and a three-floor
@@ -131,6 +119,18 @@ const CONTENT = {
       ],
       media: "media/jiangnan.mp4",
       poster: "media/jiangnan-poster.jpg",
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
+      title: "Procedural Jellyfish",
+      desc: `An animated jellyfish built from nodes and VEX in Houdini: one
+             keyframed bell drives the pulse, veins grow as shortest paths
+             across it, and Vellum arms and tentacles trail behind.`,
+      tags: ["Houdini", "VEX", "Vellum", "Karma"],
+      links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/procedural-jellyfish" }],
+      media: "media/jellyfish.mp4",
+      poster: "media/jellyfish-poster.jpg", // shown while the video loads
     },
     {
       group: "proc",
