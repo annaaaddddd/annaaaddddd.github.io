@@ -118,6 +118,23 @@ const CONTENT = {
     {
       group: "proc",
       context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
+      title: "Jiangnan Procedural Buildings",
+      desc: `One Houdini HDA stacks floors into Jiangnan riverside buildings:
+             the same tool makes a stilted teahouse and a three-floor
+             restaurant, dressed into a canal scene with willows, lattice
+             windows, and red lanterns.`,
+      tags: ["Houdini", "HDA", "Procedural Modeling"],
+      links: [
+        { label: "Tool demo", url: "https://github.com/annaaaddddd/jiangnan-procedural-buildings/blob/main/images/buildingtool_demo.mp4" },
+        { label: "Scene demo", url: "https://github.com/annaaaddddd/jiangnan-procedural-buildings/blob/main/images/demo.mp4" },
+        { label: "GitHub", url: "https://github.com/annaaaddddd/jiangnan-procedural-buildings" },
+      ],
+      media: "media/jiangnan.mp4",
+      poster: "media/jiangnan-poster.jpg",
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026",
       title: "Balloon Bunny",
       desc: `Stylized Unity scene recreating a 2D balloon illustration, with a
             hand-drawn toon look: UV-space shadows, wobbling outlines, and a
