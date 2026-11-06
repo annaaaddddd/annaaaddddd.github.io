@@ -6,7 +6,9 @@
 const $ = id => document.getElementById(id);
 
 function linkAttrs(url) {
-  return url.startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+  // external links and PDFs open in a new tab
+  return url.startsWith('http') || url.endsWith('.pdf')
+    ? ' target="_blank" rel="noopener"' : '';
 }
 
 // ---------- sidebar ----------

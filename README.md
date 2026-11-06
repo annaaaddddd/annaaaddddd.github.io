@@ -17,5 +17,4 @@ Personal site at https://annaaaddddd.github.io. Plain HTML/CSS/JS, no build step
 
 ## Todo
 
-- [ ] Resume PDF + link
 - [ ] Set Metal Renderer `hidden: false` when ready

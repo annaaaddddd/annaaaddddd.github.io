@@ -22,7 +22,7 @@ const CONTENT = {
     { label: "GitHub", url: "https://github.com/annaaaddddd" },
     { label: "ShaderToy", url: "https://www.shadertoy.com/user/annaaaddd" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/nanru-dai-8b33a9261/" },
-    // { label: "Resume", url: "#", todo: true },
+    { label: "Resume", url: "resume.pdf" },
   ],
 
   // ---------- footer ----------
