@@ -13,7 +13,7 @@ const CONTENT = {
   name: "Anna Dai",
   eyebrow: "Hi, I'm",
   lede: `MSE student in <em>Computer Graphics</em> at Penn.
-         I work on real-time rendering, GPU programming, and game engine systems.`,
+         I work on real-time rendering, GPU programming, and procedural content.`,
 
   // ---------- contact (lives in the sidebar) ----------
   email: "nanru.dai10@gmail.com",
