@@ -51,7 +51,7 @@ const CONTENT = {
              depth of field, each measured against a CPU baseline.`,
       tags: ["CUDA", "C++", "Path Tracing"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Path-Tracer" }],
-      media: "media/path-tracer.jpg",
+      media: "media/projects/path-tracer.jpg",
     },
     {
       group: "gpu",
@@ -63,8 +63,8 @@ const CONTENT = {
              time again.`,
       tags: ["Vulkan", "C++", "Compute Shaders", "Tessellation"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/vulkan-grass-rendering" }],
-      media: "media/vulkan-grass.mp4",
-      poster: "media/vulkan-grass-poster.jpg",
+      media: "media/projects/vulkan-grass.mp4",
+      poster: "media/projects/vulkan-grass-poster.jpg",
     },
     {
       group: "gpu",
@@ -78,7 +78,7 @@ const CONTENT = {
         { label: "Live demo", url: "https://annaaaddddd.github.io/WebGPU-Forward-Plus-and-Clustered-Deferred" },
         { label: "GitHub", url: "https://github.com/annaaaddddd/WebGPU-Forward-Plus-and-Clustered-Deferred" },
       ],
-      media: "media/webgpu-forward-plus.jpg",
+      media: "media/projects/webgpu-forward-plus.jpg",
     },
     {
       group: "gpu",
@@ -89,8 +89,8 @@ const CONTENT = {
              with Nsight Systems &amp; Compute.`,
       tags: ["CUDA", "C++", "Nsight"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/CUDA-Flocking" }],
-      media: "media/cuda-boids.gif",
-      poster: "media/cuda-boids-poster.jpg",
+      media: "media/projects/cuda-boids.gif",
+      poster: "media/projects/cuda-boids-poster.jpg",
     },
     {
       hidden: true, // flip to false (or delete this line) when ready
@@ -117,8 +117,8 @@ const CONTENT = {
         { label: "Scene demo", url: "https://github.com/annaaaddddd/jiangnan-procedural-buildings/blob/main/images/demo.mp4" },
         { label: "GitHub", url: "https://github.com/annaaaddddd/jiangnan-procedural-buildings" },
       ],
-      media: "media/jiangnan.mp4",
-      poster: "media/jiangnan-poster.jpg",
+      media: "media/projects/jiangnan.mp4",
+      poster: "media/projects/jiangnan-poster.jpg",
     },
     {
       group: "proc",
@@ -129,8 +129,8 @@ const CONTENT = {
              across it, and Vellum arms and tentacles trail behind.`,
       tags: ["Houdini", "VEX", "Vellum", "Karma"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/procedural-jellyfish" }],
-      media: "media/jellyfish.mp4",
-      poster: "media/jellyfish-poster.jpg", // shown while the video loads
+      media: "media/projects/jellyfish.mp4",
+      poster: "media/projects/jellyfish-poster.jpg", // shown while the video loads
     },
     {
       group: "proc",
@@ -141,8 +141,8 @@ const CONTENT = {
             one-key sunset style switch.`,
       tags: ["Unity", "Shader Graph", "HLSL", "URP", "NPR", "Post-Processing"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/toon-balloon-bunny" }],
-      media: "media/toon-bunny.mp4",
-      poster: "media/toon-bunny-poster.jpg", // shown until hover plays the video
+      media: "media/projects/toon-bunny.mp4",
+      poster: "media/projects/toon-bunny-poster.jpg", // shown until hover plays the video
     },
     {
       group: "proc",
@@ -156,8 +156,8 @@ const CONTENT = {
         { label: "Live demo", url: "https://annaaaddddd.github.io/WebGL-fireball/" },
         { label: "GitHub", url: "https://github.com/annaaaddddd/WebGL-fireball" },
       ],
-      media: "media/fireball.gif",
-      poster: "media/fireball-poster.png",
+      media: "media/projects/fireball.gif",
+      poster: "media/projects/fireball-poster.png",
     },
     {
       group: "proc",
@@ -171,8 +171,8 @@ const CONTENT = {
         { label: "Live demo", url: "https://annaaaddddd.github.io/wave-interference-cube/" },
         { label: "GitHub", url: "https://github.com/annaaaddddd/wave-interference-cube" },
       ],
-      media: "media/wave-interference.gif",
-      poster: "media/wave-interference-poster.jpg",
+      media: "media/projects/wave-interference.gif",
+      poster: "media/projects/wave-interference-poster.jpg",
     },
     {
       group: "engine",
@@ -188,7 +188,7 @@ const CONTENT = {
         { label: "Game over", url: "https://youtu.be/KpQ3lVwxoGs" },
       ],
       note: "Course fork of a private repo — code available on request.",
-      media: "media/platformer.jpg",
+      media: "media/projects/platformer.jpg",
     },
     {
       group: "research",
@@ -198,7 +198,7 @@ const CONTENT = {
              models on reasoning and goal completion, beyond visual fidelity.`,
       tags: ["Research", "World Models"],
       links: [{ label: "Project page", url: "https://world-in-world.github.io/" }],
-      media: "media/wiw-logo.svg",
+      media: "media/projects/wiw-logo.svg",
       mediaFit: "contain", // logo floats on the gradient instead of filling it
     },
   ],
@@ -252,7 +252,7 @@ const CONTENT = {
         { label: "Favorite cover (KPM)", url: "https://youtu.be/9xWnomjHm3w" },
         { label: "Most recent choreo (SLAM)", url: "https://youtu.be/G9lNsuxpEuA" },
       ],
-      gallery: [], // e.g. ["media/dance-1.jpg", "media/dance-2.jpg", "media/dance-3.jpg"]
+      gallery: [], // e.g. ["media/offscreen/dance-1.jpg", "media/offscreen/dance-2.jpg"]
     },
     {
       title: "Fiber",
@@ -262,12 +262,12 @@ const CONTENT = {
              goblet replica at twice the original's scale, body crocheted as if
              liquid were spilling out.`,
       links: [
-        { label: "Spring 2026 full portfolio (PDF)", url: "media/fiber-portfolio.pdf" },
+        { label: "Spring 2026 full portfolio (PDF)", url: "media/offscreen/fiber-portfolio.pdf" },
       ],
       gallery: [
-        "media/fiber-installation.jpg",
-        "media/fiber-goblet.jpg",
-        "media/fiber-quilt.jpg",
+        "media/offscreen/fiber-installation.jpg",
+        "media/offscreen/fiber-goblet.jpg",
+        "media/offscreen/fiber-quilt.jpg",
       ],
     },
   ],

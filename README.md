@@ -11,7 +11,7 @@ Personal site at https://annaaaddddd.github.io. Plain HTML/CSS/JS, no build step
 - `style.css`: colors are tokens at the top. Light mode is mint + periwinkle, dark mode is deep purple + butter yellow; the dark palette is defined twice (manual toggle and system preference), keep both in sync.
 - `main.js`: renders `content.js` into the page, plus theme toggle, scrollspy, carousels, and the dot-grid background. Not needed for content changes.
 - `index.html`: just the page shell, no content in it.
-- `media/`: project videos and photos, referenced from `content.js`.
+- `media/`: everything referenced from `content.js`. `projects/` holds project thumbnails, posters and clips; `offscreen/` holds the off-screen galleries and PDFs.
   - `media:` on a project takes a .jpg/.png/.gif/.mp4. Keep videos around 800px wide; a gif or mp4 with a `poster:` image stays on the poster until hover (touch screens just autoplay).
   - `gallery:` on an off-screen card takes a list of images.
 
