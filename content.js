@@ -43,6 +43,20 @@ const CONTENT = {
   projects: [
     {
       group: "gpu",
+      context: "CIS 5650 · GPU Programming · Fall 2026 · Ongoing",
+      title: "WebGPU Biome Simulator",
+      desc: `Team project. A living landscape that runs in the browser. Rain
+             and erosion reshape the terrain on the GPU, plants grow, bloom and
+             wilt where moisture and slope suit them, and procedural flowers
+             are drawn with indirect instancing.`,
+      tags: ["WebGPU", "WGSL", "TypeScript", "Compute Shaders", "Procedural"],
+      links: [
+        { label: "Live demo", url: "https://webgpu-eco.github.io/webgpu-biome-sim/?track=ecosystem" },
+        { label: "GitHub", url: "https://github.com/webgpu-eco/webgpu-biome-sim" },
+      ],
+    },
+    {
+      group: "gpu",
       context: "CIS 5650 · GPU Programming · Fall 2026",
       title: "CUDA Path Tracer",
       desc: `Physically based path tracer parallelized over path segments, with
@@ -102,6 +116,17 @@ const CONTENT = {
              interop. Extending toward lighting and model loading.`,
       tags: ["Metal", "C++", "Objective-C"],
       links: [{ label: "GitHub", url: "https://github.com/annaaaddddd/metalRenderer" }],
+    },
+    {
+      group: "proc",
+      context: "CIS 5660 · Procedural Computer Graphics · Fall 2026 · Ongoing",
+      title: "Ruin Reclamation",
+      desc: `Team project. A Houdini tool where one age slider turns a clean stone wall
+             into an overgrown ruin. Edges weather, wet stone darkens, weak
+             blocks fall and pile up as rubble in a Bullet RBD sim, and
+             L-system ivy climbs the wall. Rendered in Karma.`,
+      tags: ["Houdini", "HDA", "VEX", "Bullet RBD", "L-systems", "Karma"],
+      links: [{ label: "GitHub", url: "https://github.com/jackypan-muyan/final-project" }],
     },
     {
       group: "proc",
